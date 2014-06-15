@@ -51,10 +51,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>Turn on Apache via <code>sudo apachectl start</code></li>
 </ol>
 <h2 id="recipe">Recipe</h2>
+<p>Set up a &quot;virtualenv&quot; environment:</p>
 <ol>
-<li><code>virtualenv testdir</code><br /></li>
-<li><code>cd testdir</code><br /></li>
-<li><code>bin/activate</code><br /></li>
+<li><code>mkdir ~/env/</code><br /></li>
+<li><code>virtualenv ~/env/testdir</code><br /></li>
+<li><code>cd ~/env/testdir</code><br /></li>
+<li><code>source bin/activate</code></li>
+</ol>
+<p>Add the required pieces to this environment:</p>
+<ol>
 <li><code>git clone https://github.com/okfn/bibserver</code><br /></li>
 <li><code>cd bibserver</code><br /></li>
 <li><code>pip install -e .</code><br /></li>
