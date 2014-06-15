@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<h1 id="installation">Installation</h1>
+<p>The &quot;<a href="http://bibserver.readthedocs.org/en/latest/install.html">simple setup</a>&quot; instructions for installing BibServer leave out some important pieces, but the &quot;<a href="http://bibserver.readthedocs.org/en/latest/deploy.html">deployment</a>&quot; instructions could mostly be followed. To install a basic setup for hacking on a Macbook Pro, here's what I needed:</p>
+<ul>
+<li>java<br /></li>
+<li>elasticsearch<br /></li>
+<li>git<br /></li>
+<li>python2.7<br /></li>
+<li>pip<br /></li>
+<li>virtualenv<br /></li>
+<li>gunicorn</li>
+</ul>
+<p>(Further instructions for a serious deployment will follow in due course.)</p>
+<h2 id="ingredients">Ingredients</h2>
+<ol>
+<li>Install Java 1.8 from Oracle (<a href="http://www.java.com/download">http://www.java.com/download</a>)<br /></li>
+<li>Download ElasticSearch 1.2.1 (<a href="https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.tar.gz">tar.gz</a>) and unpack that.<br /></li>
+<li>I had git installed, but otherwise run <code>port install git-core</code><br /></li>
+<li>I had to do some fiddling with MacPorts make sure that <code>python</code> is Python 2.7.7.<br /></li>
+<li><code>port install py-pip</code><br /></li>
+<li><code>port install py-virtualenv</code><br /></li>
+<li><code>pip install gunicorn</code><br /></li>
+<li>Turn on Apache via <code>sudo apachectl start</code></li>
+</ol>
+<h2 id="recipe">Recipe</h2>
+<ol>
+<li></li>
+<li><code>virtualenv testdir</code><br /></li>
+<li><code>cd testdir</code><br /></li>
+<li><code>bin/activate</code><br /></li>
+<li><code>git clone https://github.com/okfn/bibserver</code><br /></li>
+<li><code>cd bibserver</code><br /></li>
+<li><code>pip install -e .</code></li>
+</ol>
+<p>Due to some changes to the way one of the Python dependencies works, you'll need to patch a file in order to get things running. (This will hopefully be integrated into the mainline code shortly.)</p>
+<pre class="sourceCode diff"><code class="sourceCode diff"><span class="kw">diff --git a/bibserver/view/account.py b/bibserver/view/account.py</span>
+index 9f938f7..08d188b 100644
+<span class="dt">--- a/bibserver/view/account.py</span>
+<span class="dt">+++ b/bibserver/view/account.py</span>
+<span class="dt">@@ -3,4 +3,5 @@ import uuid</span>
+ from flask import Blueprint, request, url_for, flash, redirect
+ from flask import render_template
+ from flask.ext.login import login_user, logout_user
+<span class="st">-from flask.ext.wtf import Form, TextField, TextAreaField, PasswordField, validators, ValidationErro+from flask.ext.wtf import Form</span>
+<span class="ot">+from wtforms import TextField, TextAreaField, PasswordField, validators, ValidationError</span>
+<span class="ot">+from wtforms.validators import Required</span>
+
+ from bibserver.config import config
+ import bibserver.dao as dao</code></pre>
+<h2 id="running">Running</h2>
+<p>First:</p>
+<ol>
+<li>You need to have ElasticSearch running in order to do anything. Start a separate terminal and run <code>bin/elasticsearch</code> from inside the directory where it was unpacked. It will typically runs on port 9200 -- doublecheck the output on your terminal and if that looks right, browse to <strong>localhost:9200</strong>.</li>
+</ol>
+<p>Now, from within the bibserver virtualenv that you set up:</p>
+<ol>
+<li><code>python bibserver/web.py</code><br /></li>
+<li>Browse to <strong>localhost:5000</strong>.</li>
+</ol>
+<p>If all of that works, then you'll need to do a few next steps in the web browser to give yourself something to work with. Browse to <strong>localhost:5000/account/register</strong> to create an account. You'll be logged in automatically and an email will not be sent. Browse to <strong>localhost:5000/upload</strong> and click &quot;upload from your PC&quot; to select a suitable file. BibTeX formats is recognized automatically -- here's some <a href="http://metameso.org/~joe/corneli.bib">sample data</a> that you can use if you like.</p>
+<p>Once something is uploaded you can browse it at <strong>localhost:5000/collections</strong>. From <strong>localhost:5000/USERNAME/COLLECTION</strong>, you can then click &quot;Download as BibJSON&quot; and inspect the results.</p>
+<h1 id="querying-elasticsearch">Querying ElasticSearch</h1>
+<p>Expanding on the hints on <a href="http://exploringelasticsearch.com/searching_data.html">this page</a>, I see that you can find the schema (in JSON format) via</p>
+<pre class="sh"><code>curl -X GET localhost:9200/bibserver/_mapping</code></pre>
+<p>And, then, you can get specific results back (using my sample data) in the following way:</p>
+<pre class="sh"><code>curl -X GET localhost:9200/bibserver/record/_search -d \
+ &#39;{&quot;size&quot;: 3,&quot;query&quot;: {&quot;match&quot;: {&quot;author.name&quot;: &quot;McLuhan, Marshall&quot;}}}&#39;</code></pre>
+<p>Returns:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">{<span class="st">&quot;took&quot;</span>:<span class="dv">4</span>,<span class="st">&quot;timed_out&quot;</span>:<span class="kw">false</span>,<span class="st">&quot;_shards&quot;</span>:{<span class="st">&quot;total&quot;</span>:<span class="dv">5</span>,<span class="st">&quot;successful&quot;</span>:<span class="dv">5</span>,<span class="st">&quot;failed&quot;</span>:<span class="dv">0</span>},<span class="st">&quot;hits&quot;</span>:{<span class="st">&quot;total&quot;</span>:<span class="dv">2</span>,<span class="st">&quot;max_s</span>
+core<span class="st">&quot;:4.564443,&quot;</span>hits<span class="st">&quot;:[{&quot;</span>_index<span class="st">&quot;:&quot;</span>bibserver<span class="st">&quot;,&quot;</span>_type<span class="st">&quot;:&quot;</span>record<span class="st">&quot;,&quot;</span>_id<span class="st">&quot;:&quot;</span>ef13eae6742ea8aa6ecaa950d42152d2<span class="st">&quot;,&quot;</span>_score<span class="st">&quot;:4.564443,&quot;</span>_source<span class="st">&quot;:{&quot;</span>publisher<span class="st">&quot;: &quot;</span>Sphere Books<span class="st">&quot;, &quot;</span>_last_modified<span class="st">&quot;: &quot;</span><span class="dv">20140614213719</span><span class="st">&quot;, &quot;</span>title<span class="st">&quot;: &quot;</span>Understanding <span class="dt">media</span>: The extensions of man<span class="st">&quot;, &quot;</span>url<span class="st">&quot;: &quot;</span><span class="dt">http</span>:<span class="co">//bibsoup.net/joe/joe_citations/mcluhan1994understanding&quot;, &quot;author&quot;: [{&quot;name&quot;: &quot;McLuhan, Marshall&quot;, &quot;id&quot;: &quot;McLuhanMarshall&quot;}], &quot;collection&quot;: &quot;joe_citations&quot;, &quot;year&quot;: &quot;1964&quot;, &quot;owner&quot;: &quot;joe&quot;, &quot;_created&quot;: &quot;20140614213719&quot;, &quot;_id&quot;: &quot;ef13eae6742ea8aa6ecaa950d42152d2&quot;, &quot;type&quot;: &quot;book&quot;, &quot;id&quot;: &quot;mcluhan1994understanding&quot;}},{&quot;_index&quot;:&quot;bibserver&quot;,&quot;_type&quot;:&quot;record&quot;,&quot;_id&quot;:&quot;95d501e85f24ec287fea08df419a9e43&quot;,&quot;_score&quot;:3.19511,&quot;_source&quot;:{&quot;publisher&quot;: &quot;Oxford University Press&quot;, &quot;_last_modified&quot;: &quot;20140614213719&quot;, &quot;author&quot;: [{&quot;name&quot;: &quot;McLuhan, Marshall&quot;, &quot;id&quot;: &quot;McLuhanMarshall&quot;}, {&quot;name&quot;: &quot;Powers, Bruce R&quot;, &quot;id&quot;: &quot;PowersBruceR&quot;}], &quot;url&quot;: &quot;http://bibsoup.net/joe/joe_citations/global-village&quot;, &quot;title&quot;: &quot;The Global Village&quot;, &quot;collection&quot;: &quot;joe_citations&quot;, &quot;year&quot;: &quot;1989&quot;, &quot;owner&quot;: &quot;joe&quot;, &quot;_created&quot;: &quot;20140614213719&quot;, &quot;_id&quot;: &quot;95d501e85f24ec287fea08df419a9e43&quot;, &quot;type&quot;: &quot;book&quot;, &quot;id&quot;: &quot;global-village&quot;}}]}}</span></code></pre>
+</body>
+</html>
