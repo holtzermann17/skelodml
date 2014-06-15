@@ -121,17 +121,9 @@ hr {
   padding: 0;
 }
 
-code, kbd, samp {
+pre, code, kbd, samp {
   color: #000;
-  background: #E4FFE4;
-  font-family: monospace, monospace;
-  _font-family: 'courier new', monospace;
-  font-size: 0.98em;
-}
-
-pre {
-  color: #000;
-  border: 2px solid #E4FFE4;
+  background: #E7FED7;
   font-family: monospace, monospace;
   _font-family: 'courier new', monospace;
   font-size: 0.98em;
