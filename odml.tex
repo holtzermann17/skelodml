@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{latexml}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{hyperref}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+\newcommand{\deq}{\overset{\scriptscriptstyle{d}}{=}}
+
+\newcommand{\given}{\,\vert\,}
+\newcommand{\st}{\,\colon\,} % such that
+\newcommand{\floor}[1]{{\left\lfloor #1 \right\rfloor }}
+\newcommand{\one}{\mathbb{1}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercise}{Exercise}
+
+\catcode`\_=11\relax
+\newcommand\email[1]{\_email #1\q_nil}
+\def\_email#1@#2\q_nil{%
+  \href{mailto:#1@#2}
+    {{\emailfont\detokenize{#1}\emailampersat\detokenize{#2}}}%
+}
+\newcommand\emailfont{\rmfamily}
+\newcommand\emailampersat{{\small@}}
+\catcode`\_=8\relax 
+
+\begin{document}
+
+\title{ODLM focal areas}
+
+\maketitle
+
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item\label{ontology} an ontology for mathematics (or, for a start, a mathematical wordnet) (\href{https://github.com/holtzermann17/skelodml/wiki/A.-An-ontology-for-mathematics}{discuss})
+\item\label{encoding} a semantically meaningful encoding of mathematical definitions, theorems, formulas, lemmas, \&c. (\href{https://github.com/holtzermann17/skelodml/wiki/B.-Semantically-meaningful-encodings-of-mathematical-objects}{discuss})
+\item\label{search} semantic mathematical search (\href{https://github.com/holtzermann17/skelodml/wiki/C.-Semantic-mathematical-search}{discuss})
+\item\label{fingerprinting} \href{http://www.ams.org/notices/201308/rnoti-p1034.pdf}{fingerprinting of mathematical theorems} (\href{https://github.com/holtzermann17/skelodml/wiki/D.-Fingerprinting-of-mathematical-theorems}{discuss})
+\item\label{proof} tools for assisting mathematical proof based on semantically encoded mathematics (\href{https://github.com/holtzermann17/skelodml/wiki/E.-Tools-for-assisting-mathematical-proof}{discuss})
+\item\label{tagging} manual and computerized (machine-learning based) tagging of mathematical papers (\href{https://github.com/holtzermann17/skelodml/wiki/F.-(semi)automated-tagging-of-mathematical-papers}{discuss})
+\item\label{annotation} annotation tools for PDF files and scanned papers (\href{https://github.com/holtzermann17/skelodml/wiki/G.-annotation-tools-for-PDF-files}{discuss})
+\item\label{authoring} support for open semantic docs and authoring workflows: (X)HTML, Kohlhase's stex, etc. (\href{https://github.com/holtzermann17/skelodml/wiki/H.-Open-semantic-docs-and-authoring-workflows}{discuss})
+\item\label{community} community/authority management like mathoverflow, for management and production of collections (\href{https://github.com/holtzermann17/skelodml/wiki/I.-community-and-authority-management-tools}{discuss})
+\item\label{data} structured data management tools: integration with Zotero, BibServer and other tools (\href{https://github.com/holtzermann17/skelodml/wiki/J.-structured-data-management-tools}{discuss})
+\item\label{ocr} OCR for mathematics (\href{https://github.com/holtzermann17/skelodml/wiki/K.-OCR-for-mathematics}{discuss})
+\end{enumerate}
+
+\section{Background}
+
+This site is being created as a response to the  \href{http://www.mathunion.org/fileadmin/CEIC/planning_wdml.pdf}{forthcoming article} and
+ \href{http://arxiv.org/abs/1404.1905}{recent report} from Jim Pitman and collaborators on an Open Digital Mathematics Library (ODML).
+
+Skelml is a tool that has recently been developed to use Github and together with \LaTeX ML.  This model provides a nice, neutral, supported, and standards-compliant place to write.  The site is currently being maintained by Joe Corneli (\email{holtzermann17@gmail.com}, co-director of PlanetMath.org).
+
+\section{Plans}
+
+We should try to describe the state of the art for items \ref{ontology}--\ref{ocr}, and check whether our list of focal areas is complete (it probably is not).  Once we know that we have a reasonable outline, we can look at the division of work.  Often, small subsets of projects may fit together into a project.  For example, items \ref{annotation}, \ref{authoring} and \ref{ocr} might fit naturally together, if we want to have annotated versions of legacy document that correspond on a line-by-line basis to open docs on the web.
+
+\end{document}
