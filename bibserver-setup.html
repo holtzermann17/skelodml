@@ -42,7 +42,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>(Further instructions for a serious deployment will follow in due course.)</p>
 <h2 id="ingredients">Ingredients</h2>
 <ol>
-<li>Install Java 1.8 from Oracle (<a href="http://www.java.com/download">http://www.java.com/download</a>)<br /></li>
+<li>Install Java 1.8 from Oracle (<a href="http://www.java.com/download">http://www.java.com/download</a>).<br /></li>
 <li>Download ElasticSearch 1.2.1 (<a href="https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.tar.gz">tar.gz</a>) and unpack that.<br /></li>
 <li>I had git installed, but otherwise run <code>port install git-core</code><br /></li>
 <li>I had to do some fiddling with MacPorts make sure that <code>python</code> is Python 2.7.7.<br /></li>
@@ -50,6 +50,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><code>port install py-virtualenv</code><br /></li>
 <li>Turn on Apache via <code>sudo apachectl start</code></li>
 </ol>
+<p>In order to be sure you're using the right Java version, you may need to add this to your <code>~/.profile</code>:</p>
+<pre class="sh"><code>export JAVA_HOME=`/usr/libexec/java_home -v 1.8`</code></pre>
+<p>Then, run <code>source ~/.profile</code>. To make sure that you're using the correct Python version, run <code>python --version</code> and <code>which python</code> - if it's not 2.7.7, follow the tips <a href="http://stackoverflow.com/questions/8201760/how-to-macports-select-python">here</a>.</p>
 <h2 id="recipe">Recipe</h2>
 <p>Set up a &quot;virtualenv&quot; environment:</p>
 <ol>
