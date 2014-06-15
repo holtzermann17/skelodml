@@ -145,7 +145,7 @@ skelml.index ::
 	echo '<html xmlns="http://www.w3.org/1999/xhtml"> <head> <title></title> <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/> <link rel="stylesheet" href="pandoc.css" type="text/css" /></head> <body>' >display/index.html
 	echo '<h1>html files in this repository</h1><ul>' >> display/index.html
 	for x in $$(echo display/*html | sed -e 's_\<display/__g'); do echo "<li><a href=\"$${x}\">$${x}</a></li>" >> display/index.html; done
-	echo '</ul><p>Create your own <code>index.md</code> file to make this look nicer.</p>' >> display/index.html
+	echo '</ul><p>Source code available at <a href="https://github.com/holtzermann17/skelodml">https://github.com/holtzermann17/skelodml</a>.' >> display/index.html
 	echo '</body></html>' >> display/index.html
 
 
