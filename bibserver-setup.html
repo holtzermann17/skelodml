@@ -48,7 +48,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>I had to do some fiddling with MacPorts make sure that <code>python</code> is Python 2.7.7.<br /></li>
 <li><code>port install py-pip</code><br /></li>
 <li><code>port install py-virtualenv</code><br /></li>
-<li><code>pip install gunicorn</code><br /></li>
 <li>Turn on Apache via <code>sudo apachectl start</code></li>
 </ol>
 <h2 id="recipe">Recipe</h2>
@@ -58,7 +57,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><code>bin/activate</code><br /></li>
 <li><code>git clone https://github.com/okfn/bibserver</code><br /></li>
 <li><code>cd bibserver</code><br /></li>
-<li><code>pip install -e .</code></li>
+<li><code>pip install -e .</code><br /></li>
+<li><code>pip install gunicorn</code></li>
 </ol>
 <p>Due to some changes to the way one of the Python dependencies works, you'll need to patch a file in order to get things running. (This will hopefully be integrated into the mainline code shortly.)</p>
 <pre class="sourceCode diff"><code class="sourceCode diff"><span class="kw">diff --git a/bibserver/view/account.py b/bibserver/view/account.py</span>
