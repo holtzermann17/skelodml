@@ -69,7 +69,8 @@ index 9f938f7..08d188b 100644
  from flask import Blueprint, request, url_for, flash, redirect
  from flask import render_template
  from flask.ext.login import login_user, logout_user
-<span class="st">-from flask.ext.wtf import Form, TextField, TextAreaField, PasswordField, validators, ValidationErro+from flask.ext.wtf import Form</span>
+<span class="st">-from flask.ext.wtf import Form, TextField, TextAreaField, PasswordField, validators, ValidationError</span>
+<span class="ot">+from flask.ext.wtf import Form</span>
 <span class="ot">+from wtforms import TextField, TextAreaField, PasswordField, validators, ValidationError</span>
 <span class="ot">+from wtforms.validators import Required</span>
 
@@ -94,7 +95,74 @@ index 9f938f7..08d188b 100644
 <pre class="sh"><code>curl -X GET localhost:9200/bibserver/record/_search -d \
  &#39;{&quot;size&quot;: 3,&quot;query&quot;: {&quot;match&quot;: {&quot;author.name&quot;: &quot;McLuhan, Marshall&quot;}}}&#39;</code></pre>
 <p>Returns:</p>
-<pre class="sourceCode javascript"><code class="sourceCode javascript">{<span class="st">&quot;took&quot;</span>:<span class="dv">4</span>,<span class="st">&quot;timed_out&quot;</span>:<span class="kw">false</span>,<span class="st">&quot;_shards&quot;</span>:{<span class="st">&quot;total&quot;</span>:<span class="dv">5</span>,<span class="st">&quot;successful&quot;</span>:<span class="dv">5</span>,<span class="st">&quot;failed&quot;</span>:<span class="dv">0</span>},<span class="st">&quot;hits&quot;</span>:{<span class="st">&quot;total&quot;</span>:<span class="dv">2</span>,<span class="st">&quot;max_s</span>
-core<span class="st">&quot;:4.564443,&quot;</span>hits<span class="st">&quot;:[{&quot;</span>_index<span class="st">&quot;:&quot;</span>bibserver<span class="st">&quot;,&quot;</span>_type<span class="st">&quot;:&quot;</span>record<span class="st">&quot;,&quot;</span>_id<span class="st">&quot;:&quot;</span>ef13eae6742ea8aa6ecaa950d42152d2<span class="st">&quot;,&quot;</span>_score<span class="st">&quot;:4.564443,&quot;</span>_source<span class="st">&quot;:{&quot;</span>publisher<span class="st">&quot;: &quot;</span>Sphere Books<span class="st">&quot;, &quot;</span>_last_modified<span class="st">&quot;: &quot;</span><span class="dv">20140614213719</span><span class="st">&quot;, &quot;</span>title<span class="st">&quot;: &quot;</span>Understanding <span class="dt">media</span>: The extensions of man<span class="st">&quot;, &quot;</span>url<span class="st">&quot;: &quot;</span><span class="dt">http</span>:<span class="co">//bibsoup.net/joe/joe_citations/mcluhan1994understanding&quot;, &quot;author&quot;: [{&quot;name&quot;: &quot;McLuhan, Marshall&quot;, &quot;id&quot;: &quot;McLuhanMarshall&quot;}], &quot;collection&quot;: &quot;joe_citations&quot;, &quot;year&quot;: &quot;1964&quot;, &quot;owner&quot;: &quot;joe&quot;, &quot;_created&quot;: &quot;20140614213719&quot;, &quot;_id&quot;: &quot;ef13eae6742ea8aa6ecaa950d42152d2&quot;, &quot;type&quot;: &quot;book&quot;, &quot;id&quot;: &quot;mcluhan1994understanding&quot;}},{&quot;_index&quot;:&quot;bibserver&quot;,&quot;_type&quot;:&quot;record&quot;,&quot;_id&quot;:&quot;95d501e85f24ec287fea08df419a9e43&quot;,&quot;_score&quot;:3.19511,&quot;_source&quot;:{&quot;publisher&quot;: &quot;Oxford University Press&quot;, &quot;_last_modified&quot;: &quot;20140614213719&quot;, &quot;author&quot;: [{&quot;name&quot;: &quot;McLuhan, Marshall&quot;, &quot;id&quot;: &quot;McLuhanMarshall&quot;}, {&quot;name&quot;: &quot;Powers, Bruce R&quot;, &quot;id&quot;: &quot;PowersBruceR&quot;}], &quot;url&quot;: &quot;http://bibsoup.net/joe/joe_citations/global-village&quot;, &quot;title&quot;: &quot;The Global Village&quot;, &quot;collection&quot;: &quot;joe_citations&quot;, &quot;year&quot;: &quot;1989&quot;, &quot;owner&quot;: &quot;joe&quot;, &quot;_created&quot;: &quot;20140614213719&quot;, &quot;_id&quot;: &quot;95d501e85f24ec287fea08df419a9e43&quot;, &quot;type&quot;: &quot;book&quot;, &quot;id&quot;: &quot;global-village&quot;}}]}}</span></code></pre>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">{
+   <span class="st">&quot;took&quot;</span>:<span class="dv">4</span>,
+   <span class="st">&quot;timed_out&quot;</span>:<span class="kw">false</span>,
+   <span class="st">&quot;_shards&quot;</span>:{
+      <span class="st">&quot;total&quot;</span>:<span class="dv">5</span>,
+      <span class="st">&quot;successful&quot;</span>:<span class="dv">5</span>,
+      <span class="st">&quot;failed&quot;</span>:<span class="dv">0</span>
+   },
+   <span class="st">&quot;hits&quot;</span>:{
+      <span class="st">&quot;total&quot;</span>:<span class="dv">2</span>,
+      <span class="st">&quot;max_score&quot;</span>:<span class="fl">4.564443</span>,
+      <span class="st">&quot;hits&quot;</span>:[
+         {
+            <span class="st">&quot;_index&quot;</span>:<span class="st">&quot;bibserver&quot;</span>,
+            <span class="st">&quot;_type&quot;</span>:<span class="st">&quot;record&quot;</span>,
+            <span class="st">&quot;_id&quot;</span>:<span class="st">&quot;ef13eae6742ea8aa6ecaa950d42152d2&quot;</span>,
+            <span class="st">&quot;_score&quot;</span>:<span class="fl">4.564443</span>,
+            <span class="st">&quot;_source&quot;</span>:{
+               <span class="st">&quot;publisher&quot;</span>:<span class="st">&quot;Sphere Books&quot;</span>,
+               <span class="st">&quot;_last_modified&quot;</span>:<span class="st">&quot;20140614213719&quot;</span>,
+               <span class="st">&quot;title&quot;</span>:<span class="st">&quot;Understanding media: The extensions of man&quot;</span>,
+               <span class="st">&quot;url&quot;</span>:<span class="st">&quot;http://bibsoup.net/joe/joe_citations/mcluhan1994understanding&quot;</span>,
+               <span class="st">&quot;author&quot;</span>:[
+                  {
+                     <span class="st">&quot;name&quot;</span>:<span class="st">&quot;McLuhan, Marshall&quot;</span>,
+                     <span class="st">&quot;id&quot;</span>:<span class="st">&quot;McLuhanMarshall&quot;</span>
+                  }
+               ],
+               <span class="st">&quot;collection&quot;</span>:<span class="st">&quot;joe_citations&quot;</span>,
+               <span class="st">&quot;year&quot;</span>:<span class="st">&quot;1964&quot;</span>,
+               <span class="st">&quot;owner&quot;</span>:<span class="st">&quot;joe&quot;</span>,
+               <span class="st">&quot;_created&quot;</span>:<span class="st">&quot;20140614213719&quot;</span>,
+               <span class="st">&quot;_id&quot;</span>:<span class="st">&quot;ef13eae6742ea8aa6ecaa950d42152d2&quot;</span>,
+               <span class="st">&quot;type&quot;</span>:<span class="st">&quot;book&quot;</span>,
+               <span class="st">&quot;id&quot;</span>:<span class="st">&quot;mcluhan1994understanding&quot;</span>
+            }
+         },
+         {
+            <span class="st">&quot;_index&quot;</span>:<span class="st">&quot;bibserver&quot;</span>,
+            <span class="st">&quot;_type&quot;</span>:<span class="st">&quot;record&quot;</span>,
+            <span class="st">&quot;_id&quot;</span>:<span class="st">&quot;95d501e85f24ec287fea08df419a9e43&quot;</span>,
+            <span class="st">&quot;_score&quot;</span>:<span class="fl">3.19511</span>,
+            <span class="st">&quot;_source&quot;</span>:{
+               <span class="st">&quot;publisher&quot;</span>:<span class="st">&quot;Oxford University Press&quot;</span>,
+               <span class="st">&quot;_last_modified&quot;</span>:<span class="st">&quot;20140614213719&quot;</span>,
+               <span class="st">&quot;author&quot;</span>:[
+                  {
+                     <span class="st">&quot;name&quot;</span>:<span class="st">&quot;McLuhan, Marshall&quot;</span>,
+                     <span class="st">&quot;id&quot;</span>:<span class="st">&quot;McLuhanMarshall&quot;</span>
+                  },
+                  {
+                     <span class="st">&quot;name&quot;</span>:<span class="st">&quot;Powers, Bruce R&quot;</span>,
+                     <span class="st">&quot;id&quot;</span>:<span class="st">&quot;PowersBruceR&quot;</span>
+                  }
+               ],
+               <span class="st">&quot;url&quot;</span>:<span class="st">&quot;http://bibsoup.net/joe/joe_citations/global-village&quot;</span>,
+               <span class="st">&quot;title&quot;</span>:<span class="st">&quot;The Global Village&quot;</span>,
+               <span class="st">&quot;collection&quot;</span>:<span class="st">&quot;joe_citations&quot;</span>,
+               <span class="st">&quot;year&quot;</span>:<span class="st">&quot;1989&quot;</span>,
+               <span class="st">&quot;owner&quot;</span>:<span class="st">&quot;joe&quot;</span>,
+               <span class="st">&quot;_created&quot;</span>:<span class="st">&quot;20140614213719&quot;</span>,
+               <span class="st">&quot;_id&quot;</span>:<span class="st">&quot;95d501e85f24ec287fea08df419a9e43&quot;</span>,
+               <span class="st">&quot;type&quot;</span>:<span class="st">&quot;book&quot;</span>,
+               <span class="st">&quot;id&quot;</span>:<span class="st">&quot;global-village&quot;</span>
+            }
+         }
+      ]
+   }
+}</code></pre>
 </body>
 </html>
