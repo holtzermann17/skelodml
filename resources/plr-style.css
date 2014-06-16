@@ -106,6 +106,7 @@ h4.ltx_title_paragraph {
 
 .ltx_paragraph .ltx_title + .ltx_para > .ltx_p {
     display: block;
+    text-indent:0em;
 }
 
 
