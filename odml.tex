@@ -38,6 +38,14 @@
 
 \maketitle
 
+\section{Background}
+
+This site is being created as a response to the  \href{http://www.mathunion.org/fileadmin/CEIC/planning_wdml.pdf}{forthcoming article} and
+ \href{http://arxiv.org/abs/1404.1905}{recent report} from Jim Pitman and collaborators about an Open Digital Mathematics Library (ODML).
+%
+The site is written with skelml, a simple tool that has recently been developed to use Github together with \LaTeX ML.  This model provides a nice, neutral, supported, and standards-compliant place to collaborate.  To join, please visit, and fork, \url{https://github.com/holtzermann17/skelodml} and send us pull requests.  You can also edit the \href{https://github.com/holtzermann17/skelodml/wiki}{wiki} or
+submit \href{https://github.com/holtzermann17/skelodml/issues}{issues} directly.
+
 \section{ODML use cases}
 
 Some use cases for the ODML for different stakeholder groups:\footnote{Adapted from Corneli and Mikroyannidis, 2012 ``\href{http://oro.open.ac.uk/33221/1/corneli_chap_okada_book.pdf}{Crowdsourcing Education: A Role-Based Analysis}''}
@@ -49,10 +57,10 @@ Some use cases for the ODML for different stakeholder groups:\footnote{Adapted f
 \emph{The ODML is helpful for me because it connects me with high-quality, low-cost learning resources that are personalized to my current skill set and learning goals.} 
 \item\label{teacher} (\textbf{Teacher})
 % I lead a class, we plan and implement the curriculum, my work involves giving lectures and feedback and, more infrequently, meetings with my colleagues; and fundamentally it's all about helping my students. 
-\emph{The ODML is helpful for me because it helps me find and review high-quality, low-cost learning resources, connecting with other classrooms around the world.}
+\emph{The ODML helps me find and review high-quality, low-cost learning resources, connecting with other classrooms around the world.}
 \item\label{researcher} (\textbf{Researcher})
 % I ask a thought-provoking question, we discuss or experiment, the results are written up in papers; and fundamentally it's all about generating new knowledge. 
-\emph{The ODML is helpful for me because it helps me find relevant readings and rapidly build knowledge in new research areas, integrates useful computational tools, helps me share my research and discuss the publications of others.}
+\emph{The ODML helps me find relevant readings and rapidly build knowledge in new research areas, integrates useful computational tools, helps me share my research and discuss the publications of others.}
 \item\label{administrator} (\textbf{Administrator})
 % I transform ideas into code or policies, we collectively manage a body of work, the pieces are the components of a functioning system; and fundamentally it's all about creating a workflow that works.
 \emph{The ODML is helpful for me because it means that we don't have to develop everything in-house: we can contribute to a high-quality shared open source resource that is customizable to the needs of our organization.}
@@ -61,7 +69,7 @@ Some use cases for the ODML for different stakeholder groups:\footnote{Adapted f
 \emph{The ODML is helpful for me because the organization lets me advance the projects of the particular constituencies I serve transparently, getting feedback and help from other parties working in closely related areas.}
 \item\label{regulator} (\textbf{Regulator})
 % I endeavor to discern societal needs, we work to achieve a rough consensus with a larger body of stakeholders, the results describe a certain clearly-defined skill set; and fundamentally it's all about knowing the appropriateness and relevance of a certain training process. 
-\emph{The ODML is helpful for me because it serves the whole field of mathematics and mathematical science.}
+\emph{The ODML is helpful for me because it serves the whole field of mathematics and mathematical science, and helps show clearly how various areas and programmes are doing.}
 \end{enumerate}
 
 \section{ODML focal areas}
@@ -74,13 +82,14 @@ We are interested in research and development in the following areas:
 \item\label{encoding} a semantically meaningful encoding of mathematical definitions, theorems, formulas, lemmas, \&c. (\href{https://github.com/holtzermann17/skelodml/wiki/B.-Semantically-meaningful-encodings-of-mathematical-objects}{discuss})
 \item\label{search} semantic mathematical search (\href{https://github.com/holtzermann17/skelodml/wiki/C.-Semantic-mathematical-search}{discuss})
 \item\label{fingerprinting} \href{http://www.ams.org/notices/201308/rnoti-p1034.pdf}{fingerprinting of mathematical theorems} (\href{https://github.com/holtzermann17/skelodml/wiki/D.-Fingerprinting-of-mathematical-theorems}{discuss})
-\item\label{proof} tools for assisting mathematical proof based on semantically encoded mathematics (\href{https://github.com/holtzermann17/skelodml/wiki/E.-Tools-for-assisting-mathematical-proof}{discuss})
+\item\label{proof} tools for assisting mathematical proof (and didactics) based on semantically encoded mathematics (\href{https://github.com/holtzermann17/skelodml/wiki/E.-Tools-for-assisting-mathematical-proof}{discuss})
 \item\label{tagging} manual and computerized (machine-learning based) tagging of mathematical papers (\href{https://github.com/holtzermann17/skelodml/wiki/F.-(semi)automated-tagging-of-mathematical-papers}{discuss})
 \item\label{annotation} annotation tools for PDF files and scanned papers (\href{https://github.com/holtzermann17/skelodml/wiki/G.-annotation-tools-for-PDF-files}{discuss})
 \item\label{authoring} support for open semantic docs and authoring workflows: (X)HTML, Kohlhase's stex, etc. (\href{https://github.com/holtzermann17/skelodml/wiki/H.-Open-semantic-docs-and-authoring-workflows}{discuss})
 \item\label{community} community/authority management like mathoverflow, for management and production of collections (\href{https://github.com/holtzermann17/skelodml/wiki/I.-community-and-authority-management-tools}{discuss})
-\item\label{data} structured data management tools: integration with Zotero, BibServer and other tools (\href{https://github.com/holtzermann17/skelodml/wiki/J.-structured-data-management-tools}{discuss})
+\item\label{data} structured data management tools: integration with Zotero, BibServer, the Semantic Web, and other tools (\href{https://github.com/holtzermann17/skelodml/wiki/J.-structured-data-management-tools}{discuss})
 \item\label{ocr} OCR for mathematics (\href{https://github.com/holtzermann17/skelodml/wiki/K.-OCR-for-mathematics}{discuss})
+\item\label{ui} User interface enhancements that make it easier to work with mathematical content (\href{https://github.com/holtzermann17/skelodml/wiki/L.-UI-enhancements}{discuss})
 \end{enumerate}
 
 \section{ODML Organization}
@@ -94,20 +103,30 @@ We propose to offer:
 \item\label{content} An overview of relevant sources of content (\href{https://github.com/holtzermann17/skelodml/wiki/4.-Content-overview}{discuss})
 \end{enumerate}
 
-\section{Background}
+\section{Analysis of the offering}
 
-This site is being created as a response to the  \href{http://www.mathunion.org/fileadmin/CEIC/planning_wdml.pdf}{forthcoming article} and
- \href{http://arxiv.org/abs/1404.1905}{recent report} from Jim Pitman and collaborators about an Open Digital Mathematics Library (ODML).
-%
-The site is written with skelml, a simple tool that has recently been developed to use Github together with \LaTeX ML.  This model provides a nice, neutral, supported, and standards-compliant place to collaborate.  To join, please visit, and fork, \url{https://github.com/holtzermann17/skelodml} and send us pull requests.  You can also edit the \href{https://github.com/holtzermann17/skelodml/wiki}{wiki} or
-submit \href{https://github.com/holtzermann17/skelodml/issues}{issues} directly.
+All of the stakeholders are served by useful \emph{content} (\ref{content}), and a significant body of content can be generated using OCR on public domain content (\ref{ocr}).  Of course, born-digital content is also very useful, and even better if it is written in a way that allows for increasing exposure of underlying semantics (\ref{authoring}).
+
+\textbf{Students} (\ref{student}) Interactivity is supported by semantic encodings and tools for navigating, assembling, and interacting with the content in useful ways (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}).
+
+\textbf{Teachers} (\ref{teacher}): As above (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}), and also interested in tools for managing classroom data (\ref{community}, \ref{data}).
+
+\textbf{Researchers} (\ref{researcher}): There are several use cases.  \emph{Finding relevant readings and rapidly building knowledge} may be similar to the student needs described above (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}) but the greater sophistication of researchers will also allow them to make good use of less-structured tools (\ref{fingerprinting}, \ref{tagging}). \emph{Making use of integrated computational tools} requires transparent encodings, which will often be well-served by open/transparent authoring tools (\ref{authoring}). \emph{Sharing and discussing research} is well-served by annotation tools and community workflow management systems (\ref{annotation}, \ref{community}).  Given the high volume of research one must work with, data management tools and cutting-edge UI features will both be useful (\ref{data}, \ref{ui}).
+
+\textbf{Administrators} (\ref{administrator}): Particularly well-served by integrated open tools and content that they can ``just use'' (\ref{integration}, \ref{technology}, \ref{content}).
+
+\textbf{Advocates} (\ref{advocate}): Well served by places to discuss priorities and a light-weight infrastructure that can collect the key ideas and turn them into actionable projects (\ref{integration}, \ref{mail}).
+
+\textbf{Regulators} (\ref{regulator}): In addition to wanting to participate in the discussions, like other advocates, regulators are particularly well served by robust and meaningful collections of data (\ref{data}).
 
 \section{Plans}
 
-We will try to describe the state of the art for items \ref{ontology}--\ref{ocr}, and check whether this list of focal areas is complete (it probably is not).  Once we know that we have a reasonable outline, we can look at the division of work.  Often, small subsets of projects may fit together into a grant proposal.  For example, items \ref{annotation}, \ref{authoring} and \ref{ocr} might fit naturally together, if we want to have annotated versions of legacy documents that correspond on a line-by-line basis to open docs on the web.
+We need to describe the state of the art for items \ref{ontology}--\ref{ui} in some detail, and check whether this list of focal areas is complete.  Ideally we would get feedback from people in the various stakeholder groups described above.  Building on this, we can look for a reasonable division of work.  Often, this will just mean integrating projects that are underway.  Work on integration or enhancing some of the focal areas may fit together into a grant proposal.  For example, items \ref{annotation}, \ref{authoring} and \ref{ocr} might fit naturally together, if we want to have annotated versions of legacy documents that correspond on a line-by-line basis to open docs on the web.
 
-\section{Example}
+\section{Examples}
 
-To illustrate the sort of thing that can be usefully stored in this repository, we've added a document with \href{http://holtzermann17.github.io/skelodml/bibserver-setup.html}{instructions} for installing BibServer, one of the relevant technologies.  Eventually, this repository will contain many similar how-tos and useful pointers to tools and content.
+As a simple illustration of the sort of thing that can be usefully stored in this repository, we've added a document with \href{http://holtzermann17.github.io/skelodml/bibserver-setup.html}{instructions} for installing BibServer, one of the relevant technologies.  Eventually, this repository will contain many similar how-tos and useful pointers to tools and content.
+
+As a more detailed narrative, we will add a response to the above priorities from the point of view of PlanetMath.org.
 
 \end{document}
