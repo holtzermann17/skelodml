@@ -54,22 +54,22 @@ Some use cases for the ODML for different stakeholder groups:\footnote{Adapted f
 \renewcommand{\theenumi}{\Roman{enumi}}
 \item\label{student} (\textbf{Student})
 % I go to class, we do a class project, the various aspects of which are things I can add to my portfolio or work-record; and fundamentally it's all about gaining a skill.
-\emph{The ODML is helpful for me because it connects me with high-quality, low-cost learning resources that are personalized to my current skill set and learning goals.} 
+The ODML is helpful for me because it connects me with high-quality, low-cost learning resources that are personalized to my current skill set and learning goals. 
 \item\label{teacher} (\textbf{Teacher})
 % I lead a class, we plan and implement the curriculum, my work involves giving lectures and feedback and, more infrequently, meetings with my colleagues; and fundamentally it's all about helping my students. 
-\emph{The ODML helps me find and review high-quality, low-cost learning resources, connecting with other classrooms around the world.}
+The ODML helps me find and review high-quality, low-cost learning resources, connecting with other classrooms around the world.
 \item\label{researcher} (\textbf{Researcher})
 % I ask a thought-provoking question, we discuss or experiment, the results are written up in papers; and fundamentally it's all about generating new knowledge. 
-\emph{The ODML helps me find relevant readings and rapidly build knowledge in new research areas, integrates useful computational tools, helps me share my research and discuss the publications of others.}
+The ODML helps me find relevant readings and rapidly build knowledge in new research areas, integrates useful computational tools, helps me share my research and discuss the publications of others.
 \item\label{administrator} (\textbf{Administrator})
 % I transform ideas into code or policies, we collectively manage a body of work, the pieces are the components of a functioning system; and fundamentally it's all about creating a workflow that works.
-\emph{The ODML is helpful for me because it means that we don't have to develop everything in-house: we can contribute to a high-quality shared open source resource that is customizable to the needs of our organization.}
+The ODML is helpful for me because it means that we don't have to develop everything in-house: we can contribute to a high-quality shared open source resource that is customizable to the needs of our organization.
 \item\label{advocate} (\textbf{Advocate})
 % I engage in dialog, where I promote a certain position, we try to find common ground, the results of various interactions and transactions are assembled into strategies; and fundamentally it's all about creating a distinctive organizational identity and strong partnerships. 
-\emph{The ODML is helpful for me because the organization lets me advance the projects of the particular constituencies I serve transparently, getting feedback and help from other parties working in closely related areas.}
+The ODML is helpful for me because the organization lets me advance the projects of the particular constituencies I serve transparently, getting feedback and help from other parties working in closely related areas.
 \item\label{regulator} (\textbf{Regulator})
 % I endeavor to discern societal needs, we work to achieve a rough consensus with a larger body of stakeholders, the results describe a certain clearly-defined skill set; and fundamentally it's all about knowing the appropriateness and relevance of a certain training process. 
-\emph{The ODML is helpful for me because it serves the whole field of mathematics and mathematical science, and helps show clearly how various areas and programmes are doing.}
+The ODML is helpful for me because it serves the whole field of mathematics and mathematical science, and helps show clearly how various areas and programmes are doing.
 \end{enumerate}
 
 \section{ODML focal areas}
@@ -107,15 +107,20 @@ We propose to offer:
 
 All of the stakeholders are served by useful \emph{content} (\ref{content}), and a significant body of content can be generated using OCR on public domain content (\ref{ocr}).  Of course, born-digital content is also very useful, and even better if it is written in a way that allows for increasing exposure of underlying semantics (\ref{authoring}).
 
-\textbf{Students} (\ref{student}) Interactivity is supported by semantic encodings and tools for navigating, assembling, and interacting with the content in useful ways (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}).
+\textbf{Students} (\ref{student}): Interactivity is supported by semantic encodings and tools for navigating, assembling, and interacting with the content in useful ways (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}).
 
 \textbf{Teachers} (\ref{teacher}): As above (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}), and also interested in tools for managing classroom data (\ref{community}, \ref{data}).
 
-\textbf{Researchers} (\ref{researcher}): There are several use cases.  \emph{Finding relevant readings and rapidly building knowledge} may be similar to the student needs described above (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}) but the greater sophistication of researchers will also allow them to make good use of less-structured tools (\ref{fingerprinting}, \ref{tagging}). \emph{Making use of integrated computational tools} requires transparent encodings, which will often be well-served by open/transparent authoring tools (\ref{authoring}). \emph{Sharing and discussing research} is well-served by annotation tools and community workflow management systems (\ref{annotation}, \ref{community}).  Given the high volume of research one must work with, data management tools and cutting-edge UI features will both be useful (\ref{data}, \ref{ui}).
+\textbf{Researchers} (\ref{researcher}): There are several use cases. 
+\begin{itemize}
+\item \emph{Finding relevant readings and rapidly building knowledge} may be similar to the student needs described above (\ref{ontology}, \ref{encoding}, \ref{search}, \ref{proof}) but the greater sophistication of researchers will also allow them to make good use of less-structured tools (\ref{fingerprinting}, \ref{tagging}).
+\item \emph{Making use of integrated computational tools} requires transparent encodings, which will often be well-served by open/transparent authoring tools (\ref{authoring}).
+\item \emph{Sharing and discussing research} is well-served by annotation tools and community workflow management systems (\ref{annotation}, \ref{community}); data management tools and cutting-edge UI features will also be useful (\ref{data}, \ref{ui}).
+\end{itemize}
 
 \textbf{Administrators} (\ref{administrator}): Particularly well-served by integrated open tools and content that they can ``just use'' (\ref{integration}, \ref{technology}, \ref{content}).
 
-\textbf{Advocates} (\ref{advocate}): Well served by places to discuss priorities and a light-weight infrastructure that can collect the key ideas and turn them into actionable projects (\ref{integration}, \ref{mail}).
+\textbf{Advocates} (\ref{advocate}): Advocates (representing companies, professional societies, university systems, etc.) are well served by places to discuss priorities and a light-weight infrastructure that can collect the key ideas and turn them into actionable projects (\ref{integration}, \ref{mail}, \ref{technology}).
 
 \textbf{Regulators} (\ref{regulator}): In addition to wanting to participate in the discussions, like other advocates, regulators are particularly well served by robust and meaningful collections of data (\ref{data}).
 
@@ -127,6 +132,6 @@ We need to describe the state of the art for items \ref{ontology}--\ref{ui} in s
 
 As a simple illustration of the sort of thing that can be usefully stored in this repository, we've added a document with \href{http://holtzermann17.github.io/skelodml/bibserver-setup.html}{instructions} for installing BibServer, one of the relevant technologies.  Eventually, this repository will contain many similar how-tos and useful pointers to tools and content.
 
-As a more detailed narrative, we will add a response to the above priorities from the point of view of PlanetMath.org.
+As a more detailed narrative, we will add a response to the above priorities from the point of view of PlanetMath.org.  PlanetMath's historical strengths are in community management software that can be used to discuss mathematical content (\ref{community}).  It has a modern software system, based on Drupal 7 and LaTeXML.  Some natural next steps for the project would be to integrate PlanetMath's software with BibServer (\ref{data}) and improve its authoring tools and its UI so that it can be used to author and curate nice-looking textbooks and monographs (\ref{authoring}, \ref{ui}).  This could be developed in a grant project that would integrate Fr\'ed\'erick Wang's work on MathML display, Git\footnote{inspired by on Peter Ralph's skelml and the recent successful development of the open \emph{Homotopy Type Theory} by the Univalent Foundations Programe at the Institute for Advanced Study}, 
 
 \end{document}
