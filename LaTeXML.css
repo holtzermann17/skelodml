@@ -9,9 +9,11 @@
 .ltx_page_footer *[rel~="up"]   { display:block; text-align:center; }
 .ltx_page_header *[rel~="next"],
 .ltx_page_footer *[rel~="next"] {  float:right; }
+/* What was I trying for here; need more selective rule!
 .ltx_page_header .ltx_ref,
 .ltx_page_footer .ltx_ref {
     margin:0 1em; }
+*/
 .ltx_page_header li {
     padding:0.1em 0.2em 0.1em 1em;}
 
@@ -27,7 +29,7 @@
 .ltx_page_footer:before
  { content:"."; display:block; height:0; clear:both; visibility:hidden; }
 
-.ltx_page_logo     { font-size:80%; margin-top: 5px; float:right; }
+.ltx_page_logo     { font-size:80%; margin-top: 5px; clear:both; float:right; }
 .ltx_page_logo a   { font-variant: small-caps; }
 .ltx_page_logo img { vertical-align:-3px; }
 
@@ -112,20 +114,29 @@ div.ltx_equation { display:block; width:95%; text-align:center; }
 /*.ltx_equation span.ltx_refnum.ltx_left { position:absolute; left:2em; }
 .ltx_equation span.ltx_refnum.ltx_right { position:absolute; right:2em; }
 */
-.ltx_tag_equation.ltx_align_left { position:absolute; left:2em; }
-.ltx_tag_equation.ltx_align_right { position:absolute; right:2em; }
+.ltx_tag_equation.ltx_align_left { position:absolute; left:3em; }
+.ltx_tag_equation.ltx_align_right { position:absolute; right:3em; }
 
 .ltx_equation td { width:auto; }
 table.ltx_equation,
 table.ltx_equationgroup { width:100%; }
 table.ltx_eqn_align tr.ltx_equation td.ltx_align_left + td.ltx_align_right { padding-left:3em; }
 table.ltx_eqn_eqnarray tr.ltx_eqn_lefteqn + tr td.ltx_align_right { min-width:2em; }
+td.ltx_eqn_eqno { max-width:0em; overflow:visible; }
+td.ltx_eqn_eqno.ltx_align_right .ltx_tag { float:right; }
 
 /* Hide this from IE */
-tr > td.ltx_eqn_pad { width:50%; }
+tr > td.ltx_eqn_center_padleft,
+tr > td.ltx_eqn_center_padright { width:50%; }
+tr > td.ltx_eqn_left_padleft,
+tr > td.ltx_eqn_right_padright { min-width:2em; }
+tr > td.ltx_eqn_left_padright,
+tr > td.ltx_eqn_right_padleft  { width:100%; }
 
 /* Position the tag to look like a normal item bullet. */
-li.ltx_item > .ltx_tag { display:inline; margin-left:-1.5em; }
+li.ltx_item > .ltx_tag {
+   display:inline-block; margin-left:-1.5em; min-width:1.5em;
+   text-align:right; }
 .ltx_item .ltx_tag + .ltx_para,
 .ltx_item .ltx_tag + .ltx_para .ltx_p  { display:inline; }
 
