@@ -116,6 +116,11 @@ h4.ltx_title_paragraph {
     margin-left: .5em;
 }
 
+li.ltx_item > .ltx_tag {
+display:inline-block !important;
+margin-left:-1.5em !important;
+text-align: right !important;
+width: 20px !important;}
 /* this is not working
 .ltx_item .ltx_tag + .ltx_para > .ltx_p {
     display: block;
