@@ -7,6 +7,4 @@ The main documents are written in LaTeX and will appear
 on http://holtzermann17.github.io/skelodml/ -- but the Github-based
 wiki is also useful, and is available at https://github.com/holtzermann17/skelodml/wiki
 
-See the Skelml page for instructions on how to update the LaTeX documents.
-
-created June 2014 -MC
+**New Contributors:** [Start here](https://github.com/holtzermann17/skelodml/wiki/1.-Home) for a gentle walkthrough.
