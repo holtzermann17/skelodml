@@ -72,7 +72,7 @@ First:
 
 1. You need to have ElasticSearch running in order to do anything.  Start a separate terminal and run `bin/elasticsearch` from inside the directory where it was unpacked.  It will typically runs on port 9200 -- doublecheck the output on your terminal and if that looks right, browse to **localhost:9200**.
 
-Now, from within the bibserver virtualenv that you set up:
+Now, from within the bibserver virtualenv that you've set up and activity (working directory is `~/env/testdir/bibserver/`):
 
 1. `python bibserver/web.py`
 2. Browse to **localhost:5000**.
