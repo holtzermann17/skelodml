@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{latexml}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{hyperref}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+\newcommand{\deq}{\overset{\scriptscriptstyle{d}}{=}}
+
+\newcommand{\given}{\,\vert\,}
+\newcommand{\st}{\,\colon\,} % such that
+\newcommand{\floor}[1]{{\left\lfloor #1 \right\rfloor }}
+\newcommand{\one}{\mathbb{1}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercise}{Exercise}
+
+\catcode`\_=11\relax
+\newcommand\email[1]{\_email #1\q_nil}
+\def\_email#1@#2\q_nil{%
+  \href{mailto:#1@#2}
+    {{\emailfont\detokenize{#1}\emailampersat\detokenize{#2}}}%
+}
+\newcommand\emailfont{\rmfamily}
+\newcommand\emailampersat{{\small@}}
+\catcode`\_=8\relax 
+
+\begin{document}
+
+\title{Global Digital Mathematics Library}
+
+\maketitle
+
+\section{Background (adapted from a summary by Patrick Ion)}
+
+Following the IMU meeting on August 17 at which a GDML WG was named,
+as a result of the enthusiasm for the matter that people in Seoul
+displayed, we had an informal meeting that has come to be known as the
+``Fried Chicken" meeting. 
+
+Those participating included WG members and some others:
+\begin{itemize}
+\item Thierry Bouche [WG]
+\item Tom Hales
+\item Patrick Ion [WG]
+\item Michael Kohlhase [WG]
+\item Alex Pechen
+\item Olaf Teschke [WG]
+\item Michael Trott
+\item Eric Weisstein [WG]
+\item Stephen Wolfram
+\end{itemize}
+
+The discussion was largely led by Stephen Wolfram with Michael
+Kohlhase recording matters on the whiteboard.  It ranged over material
+familiar in some respects to all of us, but the discussions helped the
+group realize better their common purpose.  Obviously only part of the
+context could be broached, and we already have the much larger NRC
+report to work with.
+
+Rough notes derived from the board are as follows, organized as a
+number of Goal points, as follows:
+
+\begin{itemize}
+\item[{[}G1{]}] \textbf{Material Acquisition - Digitize All Mathematics.}
+The general idea is to digitize all mathematical documents so as to
+have the legacy of the mathematical corpus available. Although
+clearly unrealizable, it is a good simple goal.
+
+\item[{[}G2{]}] \textbf{IDs and Metadata \(\forall\) Math.}
+Indexing must be provided and  databases produced about the
+documents of mathematics that are assembled.
+
+\item[{[}G3{]}] \textbf{Add Presentation Markup \(\forall\) Math (pMathML / \(\LaTeX\)).}
+In particular, \(\TeX\), character PDF, and markups that specify
+the documents in a way that is more computationally accessible
+should be provided.
+
+\item[{[}G4{]}] \textbf{Create a Target Format for Semantic Math.}
+An intermediate-level semantic representation language for
+mathematical literature, between presentation and full formalization,
+and applicable to enhance the availability if the knowledge in the
+mathematical corpus needs developing.
+
+\item[{[}G5{]} \textbf{Advanced Services and Use Cases beyond [G2-G4].}
+\begin{itemize}
+\item "Wolfram Alpha" for all math literature
+\item Conflict propagation over the literature (we need to know what is true)
+\item Topic modeling for mathematics
+\item Support for such queries as "What papers say something about my paper?"
+\item Finding results that are implicit in a document set
+\item Finding  theorems applicable in a context
+\item Illuminating tenure and promotion cases
+\item Facilitating search for plagiarism and reinvention
+\item Mathematical recommender systems
+\end{itemize}
+
+\item[{[}G6{]}] \textbf{WDML Portal(s)/App(s)/API(s).}
+A GDML will offer new services through Apps and must offer
+public APIs to its data.
+
+\item[{[}G7{]}] \textbf{Models of Sustainability and Extensions.}
+The organizational model of a GDML for the ages has to be set up.
+
+\item[{[}G8{]}] \textbf{Subcontract Processing for Funds / Hiring for WDML.}
+In the initial stages there has to be an organizational center
+that can receive funds, enter into contracts and hire workers.
+
+\item[{[}G9{]}] \textbf{Mathematical linguistics.}
+The language of mathematics needs more careful analysis extending
+natural language processing.
+
+\section{Additional matters not listed as G points.}
+\begin{itemize}
+\item GDML needs lawyerly advice in setting it up.
+\item Should one build a Math Papers App Store?
+\item A GDML should support data-mining behind an NDA wall if needed.
+\item Holdings of a GDML must be physically distributed and redundant.
+  LOCKSS!
+\item Museum of Math?
+\item GDML will have to engage in outreach throughout its existence.
+\end{itemize}
+
+
+\end{document}
